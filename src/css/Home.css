@@ -1,0 +1,143 @@
+.Title-store{
+    font-size: 30px;
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    border-style: solid;
+    -webkit-box-shadow: 11px 11px 0px -6px rgba(0,0,0,0.73);
+    -moz-box-shadow: 11px 11px 0px -6px rgba(0,0,0,0.73);
+    box-shadow: 11px 11px 0px -6px rgba(0,0,0,0.73);
+    border-radius: 20px;
+    margin: auto;
+    width: 400px;
+    margin-top: 40px;
+}
+.logo{
+    width: 60px;
+    height: 60px;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: space-evenly;
+    background-color: rgba(21, 26, 30, 0.438);
+    border-radius: 20px;
+    box-shadow: 10px 10px 5px -1px rgba(0,0,0,0.5);
+  }
+
+  .desc-container-1{
+    padding: 25px;
+    color: rgb(0, 0, 0);
+    font-weight: bolder;
+  }
+  .tokenId{
+      font-size: 20px;
+      font-weight: 500;
+  }
+
+  .title-nft{
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.price{
+    font-weight: bold;
+    font-size: 25px; 
+}
+
+.publisher{
+    font-size: 20px; 
+}
+.btn-containerbuy{
+    background-color: aquamarine;
+    padding: 10px;
+    width: 400px;
+    color: rgb(0, 0, 0);
+    margin-top: 20px;
+    font-size: 25px;
+    font-weight: bolder;
+    color: black;
+    border: solid black;
+    -webkit-box-shadow: 11px 11px 0px -6px rgba(0,0,0,0.73);
+    -moz-box-shadow: 11px 11px 0px -6px rgba(0,0,0,0.73);
+    box-shadow: 11px 11px 0px -6px rgba(0,0,0,0.73);
+    border-radius: 20px;
+    transition: 0.4s ease-in-out;
+}
+.btn-containerbuy:hover{
+    transform: scale(0.9);
+    box-shadow: 10px 10px 5px -1px rgba(0,0,0,0.5);
+}
+
+.homepage{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: space-around;
+}
+
+.card-layouthome{
+    width: max-content;
+    height: auto;
+    color: black;
+    margin: auto;
+    border-radius: 20px;
+}
+
+.card-layouthome > div {
+    border: solid rgb(0, 0, 0);
+    border-radius: 20px;
+    padding: 20px;
+    color: rgb(0, 0, 0);
+    transition: 0.4s ease-in-out;
+    background-color: rgb(255, 255, 255);
+    -webkit-box-shadow: 11px 11px 0px -6px rgba(0,0,0,0.73);
+    -moz-box-shadow: 11px 11px 0px -6px rgba(0,0,0,0.73);
+    box-shadow: 11px 11px 0px -6px rgba(0,0,0,0.73);
+    transform: scale(0.9);
+  }
+
+  .card-layouthome > div:hover {
+    
+    
+    transform: scale(1);
+    transition: 0.4s ease-in-out;
+    
+  }
+  .img-display{
+    border-style: solid;
+  }
+
+  .card-layout > article img {
+    width: auto;
+    height: auto;
+    border-radius: 20px;
+    border-style: solid;
+  }
+  .text-store {
+    font-weight: bolder;
+    font-size: 25px;
+    padding: 0 10px 20px;
+  }
+  .text-store > button {
+    background: gray;
+    border: 0;
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    width: 100%;
+}
+.form-field{
+    width: 500px;
+    border: none;
+    font-size: 20px;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+@media only screen and (min-width: 0px) and (max-width:1600px){
+
+    .homepage{
+        display: grid;
+        grid-template-columns: auto;
+    }
+  
+  }

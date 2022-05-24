@@ -1,0 +1,176 @@
+.Title-inventory{
+    font-size: 25px;
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    border-style: solid;
+    -webkit-box-shadow: 11px 11px 0px -6px rgba(0,0,0,0.73);
+    -moz-box-shadow: 11px 11px 0px -6px rgba(0,0,0,0.73);
+    box-shadow: 11px 11px 0px -6px rgba(0,0,0,0.73);
+    border-radius: 20px;
+    margin: auto;
+    width: 400px;
+    margin-top: 40px;
+}
+
+.img-display{
+    width: 400px;
+    height: 400px;
+    border-radius: 20px;
+}
+.meta-logo{
+    width: 10%;
+    transition: 0.8s ease-in-out;
+}
+
+.meta-logo:hover{
+    width: 10%;
+    transform: scale(1.1);
+}
+
+.walletinfo{
+    font-size: 15px;
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    justify-content: center;
+    border-style: solid;
+    -webkit-box-shadow: 11px 11px 0px -6px rgba(0,0,0,0.73);
+    -moz-box-shadow: 11px 11px 0px -6px rgba(0,0,0,0.73);
+    box-shadow: 11px 11px 0px -6px rgba(0,0,0,0.73);
+    border-radius: 20px;
+    margin: auto;
+    width: max-content;
+    margin-top: 40px;
+}
+.store{
+    background-color: aquamarine;
+    padding: 10px;
+    font-weight: bolder;
+    border:solid;
+}
+
+  .desc-container{
+      padding: 25px;
+      color: rgb(0, 0, 0);
+      font-weight: bolder;
+  }
+  .tokenId{
+      font-size: 20px;
+      font-weight: 500;
+  }
+
+  .title-nft{
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.price{
+    font-size: 25px; 
+}
+
+.publisher{
+    font-size: 20px; 
+}
+.btn-container{
+    background-color: rgb(247, 247, 247);
+    padding: 10px;
+    width: 400px;
+    color: rgb(0, 0, 0);
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bolder;
+    border: solid black;
+    -webkit-box-shadow: 11px 11px 0px -6px rgba(0,0,0,0.73);
+    -moz-box-shadow: 11px 11px 0px -6px rgba(0,0,0,0.73);
+    box-shadow: 11px 11px 0px -6px rgba(0,0,0,0.73);
+    border-radius: 20px;
+
+    transition: 0.4s ease-in-out;
+}
+.btn-container:hover{
+    transform: scale(0.9);
+    box-shadow: 10px 10px 5px -1px rgba(0,0,0,0.5);
+}
+
+.walletpage{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: space-evenly;
+}
+
+.form-fieldresell{
+    border: solid;
+    font-size: 25px;
+    -webkit-box-shadow: 11px 11px 0px -6px rgba(0,0,0,0.73);
+    -moz-box-shadow: 11px 11px 0px -6px rgba(0,0,0,0.73);
+    box-shadow: 11px 11px 0px -6px rgba(0,0,0,0.73);
+    padding: 20px;
+    border-radius: 30px;
+    margin-top: 20px;
+}
+.TitleSell{
+    color: rgb(0, 0, 0);
+    font-size: 25px;
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    border-style: solid;
+    -webkit-box-shadow: 11px 11px 0px -6px rgba(0,0,0,0.73);
+    -moz-box-shadow: 11px 11px 0px -6px rgba(0,0,0,0.73);
+    box-shadow: 11px 11px 0px -6px rgba(0,0,0,0.73);
+    border-radius: 20px;
+    margin: auto;
+    width: 400px;
+    margin-top: 40px;
+}
+
+.card-layout_inventory{
+    padding: 20px;
+    display: flex;
+    width: max-content;
+    margin: auto;
+    border-radius: 20px;
+}
+
+.card-layout_inventory > div {
+    border: solid rgb(0, 0, 0);
+    border-radius: 20px;
+    padding: 20px;
+    color: black;
+    transition: 0.4s ease-in-out;
+    background-color: rgb(255, 255, 255);
+    -webkit-box-shadow: 11px 11px 0px -6px rgba(0,0,0,0.73);
+    -moz-box-shadow: 11px 11px 0px -6px rgba(0,0,0,0.73);
+    box-shadow: 11px 11px 0px -6px rgba(0,0,0,0.73);
+    transform: scale(0.9);
+  }
+
+  .card-layout_inventory > div:hover {
+    transform: scale(1);
+    transition: 0.4s ease-in-out;
+  }
+
+  .card-layout > div img {
+    max-width: 100%;
+    border-radius: 20px;
+  }
+  .text {
+      font-weight: bolder;
+      font-size: 20px;
+    padding: 0 10px 20px;
+  }
+  .text > button {
+    background: gray;
+    border: 0;
+    color: white;
+    padding: 10px;
+    width: 100%;
+}
+.form-field{
+    width: 500px;
+    border: none;
+    font-size: 20px;
+    border-radius: 20px;
+    padding: 20px;
+}
