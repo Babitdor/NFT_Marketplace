@@ -42,7 +42,7 @@ To install all the necessary packages.
 
 ## `open Ganache`
 Create a Blockchain server,
-Take one of the Ganacher and link to your Metamask Wallet by pasting the secret key. (Localhost 8575 network)
+Take one of the accounts in Ganache and import it to your Metamask Wallet by pasting the secret key. (Localhost 8575 network)
 
 ## `truffle compile`
 To compile the Solidity Contracts.
