@@ -105,18 +105,7 @@ contract Marketplace is ERC721 {
         pendingArtCount++;
     }
 
-    /*
-     *   The buyFinxterArt() function verifies whether the buyer has enough balance to purchase the art.
-     *   The function also checks whether the seller and buyer both have a valid account address.
-     *   The token owner's address is not the same as the buyer's address. The seller is the owner
-     *   of the art. Once all of the conditions have been verified, it will start the payment and
-     *   art token transfer process. _transfer transfers an art token from the seller to the buyer's
-     *   address. _current_owner.transfer will transfer the buyer's payment amount to the art owner's
-     *   account. If the seller pays extra Ether to buy the art, that ether will be refunded to the
-     *   buyer's account. Finally, the buyFinxterArt() function will update art ownership information in
-     *   the blockchain. The status will change to 0, also known as the sold status. The function
-     *   implementations keep records of the art transaction in the ArtTxn array.
-     */
+   
     function buyNFTArt(uint256 _tokenId) public payable {
         (
             uint256 _id,
@@ -200,14 +189,7 @@ contract Marketplace is ERC721 {
         );
     }
 
-    /*
-     * The resellFinxterArt() function verifies whether the sender's address is valid and makes sure
-     * that only the current art owner is allowed to resell the art. Then, the resellFinxterArt()
-     * function updates the art status from 0 to 1 and moves to the sale state. It also updates
-     * the art's selling price and increases the count of the current total pending arts. emit
-     * LogArtResell() is used to add a log to the blockchain for the art's status and price
-     * changes.
-     */
+   
     function resellNFTArt(uint256 _tokenId, uint256 _price) public payable {
         require(msg.sender != address(0));
         require(isOwnerOf(_tokenId, msg.sender));
