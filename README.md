@@ -20,6 +20,10 @@ Chai and chai-as-promised was used for testing the Solidity contracts.
 
 Truffle was used to Compile/Deploy the contracts to the Blockchain.
 
+# Screenshot
+![Screenshot (157)](https://user-images.githubusercontent.com/57758789/170818536-498ef0db-421f-41ad-9f91-e89f668bd65d.png)
+
+
 
 ## Available Scripts
 
@@ -29,6 +33,31 @@ In the project directory, you can run:
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+### `npm install`
+
+To install all the necessary packages.
+
+## `open Ganache`
+Create a Blockchain server,
+Take one of the Ganacher and link to your Metamask Wallet by pasting the secret key. (Localhost 8575 network)
+
+## `truffle compile`
+To compile the Solidity Contracts.
+
+## `truffle migrate --reset`
+To migrate the contracts to Ganache Blockchain Server.
+
+## After this you are done!
+
+### Just run `npm start` and Login with Metamask on Popup.
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
+
 
 
 
