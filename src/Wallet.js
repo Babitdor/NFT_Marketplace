@@ -5,6 +5,7 @@ import './css/Wallet.css';
 import meta from './assets/meta.png'
 
 
+
 export class Wallet extends Component {
   constructor(props) {
         super(props);
@@ -23,7 +24,6 @@ export class Wallet extends Component {
             image: [],
             status:[],
             total: 0,
-
             user: '',
             balance: 0,
             contractInstance: '',
@@ -66,14 +66,14 @@ export class Wallet extends Component {
         this.setState({ contractInstance: contractInstance });
         this.setState({ networkId: networkId});
         this.setState({ networkType: networkType});
-        await this.loadMyFinxterArts(web3);
+        await this.loadMyNFTArts(web3);
   }
 
-      async loadMyFinxterArts(web3) {  // only load arts that belong to me as a owner
+      async loadMyNFTArts(web3) {  // only load arts that belong to me as a owner
 
         try {
             let ids;
-            const result = await this.state.contractInstance.methods.findMyFinxterArts().call();
+            const result = await this.state.contractInstance.methods.findMyNFTArts().call();
             ids = result[0];
             let _total = ids.length;
             if(ids && _total>0) {
@@ -97,7 +97,7 @@ export class Wallet extends Component {
                     for(let j = 0; j < columns; j++) {
                     if(idx<_total) {
                         let tokenId= ids[idx];
-                        const art = await this.state.contractInstance.methods.findFinxterArt(tokenId).call();
+                        const art = await this.state.contractInstance.methods.findNFTArt(tokenId).call();
                         const priceInEther = web3.utils.fromWei(art[3], 'ether');
                        _tokenIds.push(art[0]);
                        _title.push(art[1]);
@@ -159,7 +159,7 @@ export class Wallet extends Component {
     async submitArtSell() {
         try {
             const priceInWei =  window.web3.utils.toWei(this.state.sellPrice, 'ether');
-            await this.state.contractInstance.methods.resellFinxterArt(this.state.sellTokenId, priceInWei).send({
+            await this.state.contractInstance.methods.resellNFTArt(this.state.sellTokenId, priceInWei).send({
             from: this.state.user, gas: 6000000
         })
         window.location.reload(); 
@@ -272,23 +272,21 @@ export class Wallet extends Component {
         return (
                 <div className="App">
                 <AppNav></AppNav>
-                {/* <section className="text-center">
-                <div className="row mb-3 mt-3">
+                <div className="walletinfo">
+                        <img src={meta} alt="" className='meta-logo'/>
                         <div className="col-md-2 mb-md-0 mb-1"></div>
                             <div className="col-md-8 mb-md-0 mb-1">
                                 <div className="card">
                                     <div className="card-body ">
-                                    <div className="row">
+                                    <div style={{display:'flex', alignItems:'center', justifyContent:'center',flexDirection:'column',padding:30}}>
                                         <div className="col-md-6 mb-md-0">
                                             <span className="font-weight-bold blue-grey-text">My Address:</span> {this.state.user}
                                         </div>
-                                        <div className="col-md-6 mb-md-0">
+                                        <div style={{padding:10}}>
                                             <span className="font-weight-bold blue-grey-text">NetworkId:</span> {this.state.networkId}
                                         </div>
-                                    </div>
-                                    <div className="row">
                                         <div className="col-md-6 mb-md-0">
-                                            <span className="font-weight-bold blue-grey-text">Balance:</span> {this.state.balance} (ether)
+                                            <span className="font-weight-bold blue-grey-text">Balance:</span> {this.state.balance} (ETH)
                                         </div>
                                         <div className="col-md-6 mb-md-0">
                                             <span className="font-weight-bold blue-grey-text">NetworkType:</span> {this.state.networkType}
@@ -297,11 +295,8 @@ export class Wallet extends Component {
                                     </div>
                                 </div>
                             </div>
-
-                            <div className="col-md-2 mb-md-0 mb-1"></div>
-                        </div>
-
-                </section> */}
+                        <div className="col-md-2 mb-md-0 mb-1"></div>
+                    </div>
                 </div>
 
         );

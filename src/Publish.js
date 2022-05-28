@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { getWeb3, getInstance}  from "./Web3Util";
 import AppNav from './AppNav';
+import Web3 from 'web3';
 import './css/Publish.css';
+import MemoryToken from './abi/MemoryToken.json'
 
 
 export class Publish extends Component {
       constructor(props) {
         super(props);
         this.state = { 
-            imageValue: 'https://ipfs.infura.io/ipfs/QmYrKanedczhqUaKDwvDUWPm5RTutHq7uErUSrun29ipQA',
+            imageValue: 'https://ipfs.infura.io/ipfs/QmXFm7SKZSJLYhR1L8HS1X2fAVTS6hsKveV8MQcfdGgSFK',
             description: '',
             title: '', 
             authorName: '',
@@ -17,6 +19,7 @@ export class Publish extends Component {
             user: '',
             balance: 0,
             contractInstance: '',
+            tokenURIs:[],
             networkId:'',
             networkType:'',
         };
@@ -27,6 +30,8 @@ export class Publish extends Component {
 
     // gets called automatically after component creation
     componentDidMount = async () => {
+
+        
         const web3 = await getWeb3();
         window.web3 = web3;
         const contractInstance = await getInstance(web3);
@@ -40,8 +45,62 @@ export class Publish extends Component {
         this.setState({ contractInstance: contractInstance });
         this.setState({ networkId: networkId});
         this.setState({ networkType: networkType});
+        await this.loadWeb3()
+        await this.loadBlockchainData()
         
       }
+    
+      async loadWeb3() {
+        if (window.ethereum) {
+          window.web3 = new Web3(window.ethereum)
+          await window.ethereum.request({ method: 'eth_requestAccounts'});
+        }
+        else if (window.web3) {
+          window.web3 = new Web3(window.ethereum.currentProvider)
+        }
+        else {
+          window.alert('Non-Ethereum browser detected. You should consider trying MetaMask!')
+        }
+      }
+    
+      async loadBlockchainData() {
+        const web3 = window.web3
+        const accounts = await web3.eth.getAccounts()
+        const balances = await web3.eth.getBalance(accounts[0])/Math.pow(10,18)
+        this.setState({ balance: balances })
+        this.setState({ account: accounts[0] })
+        
+    
+        
+        // Load smart contract
+        const networkData = MemoryToken.networks[await web3.eth.net.getId()]
+        
+        if(networkData) {
+          const abi = MemoryToken.abi
+          const address = networkData.address
+          const token = new web3.eth.Contract(abi, address)
+          this.setState({ token })
+          const totalSupply = await token.methods.totalSupply().call()
+          this.setState({ totalSupply })
+          
+          
+          // Load Tokens
+          let balanceOf = await token.methods.balanceOf(accounts[0]).call()
+          for (let i = 0; i < balanceOf; i++) {
+            let id = await token.methods.tokenOfOwnerByIndex(accounts[0], i).call()
+            let tokenURI = await token.methods.tokenURI(id).call()
+            
+            const tokensIDs = tokenURI.substring(21, tokenURI.length)
+            this.setState({
+              tokenURIs: [...this.state.tokenURIs, tokensIDs]
+            })
+          }
+          this.setState({ loading: false})
+        } else {
+          alert('Smart contract not deployed to detected network.')
+        }
+      }
+    
 
       
 
@@ -72,7 +131,8 @@ export class Publish extends Component {
 
       async publishArt(title, description, date, authorName, price, imageValue) {
         try {
-            await this.state.contractInstance.methods.createFinxterToken(title,description, date, authorName, price, imageValue).send({
+            console.log(this.state.contractInstance.methods)
+            await this.state.contractInstance.methods.createNFTToken(title,description, date, authorName, price, imageValue).send({
                 from: this.state.user
             })
             this.props.history.push(`/home`) // automatically move to home page after publishing
@@ -98,17 +158,16 @@ export class Publish extends Component {
                                     <div className="row">
                                         <div className="Text-container">
                                         <div className='text-image'>
-                                        
+                                        <h5 className='walletcontents'>Wallet Contents</h5>
                                         <div><img className="NFT" alt="art" src={this.state.imageValue} /></div>
+                                            
                                             <select className="Select" onChange={this.imageChange} value={this.state.imageValue}>
-                                                <option value="https://ipfs.infura.io/ipfs/QmYrKanedczhqUaKDwvDUWPm5RTutHq7uErUSrun29ipQA">NFT1</option>
-                                                <option value="https://ipfs.infura.io/ipfs/QmQh3vL7vhXdwTLHUQkNrLpTMjQEgCndAUCdEivEx3bsvL">NFT2</option>
-                                                <option value="https://ipfs.infura.io/ipfs/QmQFaVFKc2MTbLXFvdsZhE76Lu5PdyHPkBBMGZn79mFW3D">NFT3</option>
-                                                <option value="https://ipfs.infura.io/ipfs/QmTJVoAyB1cf6vtPgSy5WVtvoVDtKSBXVowSJVvUzLYSt5">NFT4</option>
-                                                <option value="https://ipfs.infura.io/ipfs/QmVUuUUEtoKrCtxD8JnS8gYzK5Z7WAxRAzTgdswM6QBiCf">NFT5</option>
-                                                <option value="https://ipfs.infura.io/ipfs/QmZrAArt8Hsc3KqcT854Wbb9Htp8MmEvpc9ueu9khWXtSe">NFT6</option>
-                                                <option value="https://ipfs.infura.io/ipfs/QmairsmBvvs1uFYS92Uwbsb7BhK9GQT6MSmyghEHrQiBbj">NFT7</option>
+                                            {this.state.tokenURIs.map((tokenURI, key) => {
+                                                return(
+                                                <option value={tokenURI} key={key}>NFT{key+1}</option>
+                                                )})}
                                             </select>
+                                             
                                         </div>
                                         </div>  
                                         <div className='textinput'>

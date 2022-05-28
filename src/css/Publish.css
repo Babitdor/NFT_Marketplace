@@ -8,6 +8,19 @@
     color: black;
 
 }
+.walletcontents{
+    font-size: larger;
+    font-size: 25px;
+    background-color: aquamarine;
+    border-style: solid;
+    -webkit-box-shadow: 11px 11px 0px -6px rgba(0,0,0,0.73);
+    -moz-box-shadow: 11px 11px 0px -6px rgba(0,0,0,0.73);
+    box-shadow: 11px 11px 0px -6px rgba(0,0,0,0.73);
+    border-radius: 20px;
+    margin: auto;
+    width: 300px;
+    font-weight: bolder;
+}
 .NFT{
     width: 300px;
     height: 300px;

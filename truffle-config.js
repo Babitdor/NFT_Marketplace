@@ -24,7 +24,7 @@
 // const mnemonic = fs.readFileSync(".secret").toString().trim();
 const path = require("path");
 module.exports = {
-  contracts_build_directory: path.join(__dirname, "./frontend/src/abi"),
+  contracts_build_directory: path.join(__dirname, "./src/abi"),
   /**
    * Networks define how you connect to your ethereum client and let you set the
    * defaults web3 uses to send transactions. If you don't specify one truffle

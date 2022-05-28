@@ -54,13 +54,13 @@ export class Home extends Component {
         window.user = (await web3.eth.getAccounts())[0];
         this.setState({ user: window.user });
         this.setState({ contractInstance: contractInstance });
-        await this.loadFinxterArts(web3);
+        await this.loadArts(web3);
     }
 
-    async loadFinxterArts(web3) {
+    async loadArts(web3) {
         try {
                 let ids;
-                const result = await this.state.contractInstance.methods.findAllPendingFinxterArt().call();
+                const result = await this.state.contractInstance.methods.findAllPendingArt().call();
                 ids = result[0];
                 let _total = ids.length; // gives total ids
 
@@ -87,7 +87,7 @@ export class Home extends Component {
                         if(idx<_total) {
                             let tokenId= ids[idx];
                             
-                            const art = await this.state.contractInstance.methods.findFinxterArt(tokenId).call();
+                            const art = await this.state.contractInstance.methods.findNFTArt(tokenId).call();
                             const priceInEther = web3.utils.fromWei(art[3], 'ether');
                             _tokenIds.push(art[0]);
                             _title.push(art[1]);
@@ -129,7 +129,7 @@ export class Home extends Component {
         
         try {
             const priceInWei =  window.web3.utils.toWei(priceInEther, 'ether');
-            await this.state.contractInstance.methods.buyFinxterArt(tokenId).send({
+            await this.state.contractInstance.methods.buyNFTArt(tokenId).send({
             from: this.state.user, gas: 6000000, value: priceInWei
             })
         window.location.reload();  // to refresh the page
